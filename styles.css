@@ -18,6 +18,13 @@ main {
     text-align: center;
 }
 
+a {
+    color: #806F15;
+}
+a:hover {
+    color: #554800;
+}
+
 .controls {
     margin: 40px 0 20px 0;
     position: relative;
