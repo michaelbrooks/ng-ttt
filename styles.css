@@ -1,0 +1,224 @@
+.app {
+    margin: 0 auto;
+}
+
+header, footer {
+    text-align: center;
+    margin: 40px 0;
+}
+
+main {
+    text-align: center;
+}
+
+.controls {
+    margin: 40px 0 20px 0;
+    position: relative;
+}
+
+.controls .turn-indicator {
+    font-size: 22px;
+    line-height: 46px;
+    opacity: 0;
+    transition: opacity 200ms;
+}
+.controls .turn-indicator.player-x {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.controls .turn-indicator.player-o {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.controls .turn-indicator.visible {
+    opacity: 1;
+}
+.controls .turn-indicator.player-x .glyphicon {
+    transform: rotate(45deg);
+    top: 5px;
+    font-size: 26px;
+}
+.controls .turn-indicator.player-o .circle {
+    border: 5px solid #333;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    top: 3px;
+    position: relative;
+}
+
+.board {
+    position: relative;
+}
+
+.grid {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 500ms;
+}
+
+.game-over .grid {
+    opacity: 0.5;
+}
+
+.grid .grid-row {
+    clear: both;
+    height: 33.33%;
+    border-bottom: 2px solid black;
+}
+.grid .grid-row:last-child {
+    border: none;
+}
+
+.grid .grid-cell {
+    float: left;
+    width: 33.33%;
+    height: 100%;
+    padding: 5px;
+    border-right: 2px solid black;
+}
+.grid .grid-cell:last-child {
+    border-right: none;
+}
+
+.grid .cell {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+        
+    /* Glyphicons */
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.game-playing .grid .cell.cell-empty {
+    cursor: pointer;
+    transition: background 200ms;
+}
+.game-playing .grid .cell.cell-empty:hover {
+    background: #C7FFFF;
+}
+.game-playing .grid .cell.cell-empty:active{
+    background: #C7F2FF;
+}
+
+.grid .cell.cell-x::before {
+    content: "\2b";
+    transform: rotate(45deg);
+    display: inline-block;
+    line-height: 1;
+    padding-left: 8px;
+    padding-bottom: 8px;
+}
+
+.grid .cell.cell-o::before {
+    content: "";
+    border: 22px solid #333;
+    display: inline-block;
+}
+
+.animate-show {
+    opacity: 1;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: opacity linear 0.3s;
+}
+
+.animate-show.ng-hide {
+    opacity: 0;
+}
+
+.stripes .stripe {
+    background: #444;
+    border-radius: 7px;
+    position: absolute;
+    z-index: 5;
+}
+
+.stripes .rows .stripe {
+    left: 5%;
+    right: 5%;
+    
+    top: 50%; /* middle stripe */
+}
+.stripes .rows .stripe:first-child {
+    top: 16.66%;
+}
+.stripes .rows .stripe:last-child {
+    top: 83.33%;
+}
+
+.stripes .columns .stripe {
+    top: 5%;
+    bottom: 5%;
+    
+    left: 50%; /* middle stripe */
+}
+.stripes .columns .stripe:first-child {
+    left: 16.66%;
+}
+.stripes .columns .stripe:last-child {
+    left: 83.33%;
+}
+
+.stripes .diagonals .stripe {
+    height: 113.1%;
+    left: 10%;
+}
+.stripes .diagonals .stripe:first-child {
+    top: 10%;
+    transform: rotate(-45deg);
+    transform-origin: top;
+}
+.stripes .diagonals .stripe:last-child {
+    bottom: 10%;
+    transform: rotate(45deg);
+    transform-origin: bottom;
+}
+
+@media (min-width: 700px) {
+    .app {
+        width: 600px;
+    }
+
+    .board {
+        width: 600px;
+        height: 600px;
+    }
+    
+    .grid .cell {
+        font-size: 120px;
+        line-height: 187px;
+    }
+    
+    .grid .cell.cell-o::before {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+    }
+    
+    .stripes .rows .stripe {
+        height: 22px;
+        margin-top: -11px;
+    }
+    
+    .stripes .columns .stripe {
+        width: 22px;
+        margin-left: -11px;
+    }
+    
+    .stripes .diagonals .stripe {
+        width: 22px;
+        margin-left: -11px;
+    }
+}
