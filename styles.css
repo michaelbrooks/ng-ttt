@@ -1,10 +1,17 @@
+/* http://paletton.com/#uid=50V0z0kllllaFw0g0qFqFg0w0aF */
+
+page, body {
+    background: #FFE2AA;
+    color: #553800;
+}
+
 .app {
     margin: 0 auto;
 }
 
 header, footer {
     text-align: center;
-    margin: 40px 0;
+    margin: 30px 0;
 }
 
 main {
@@ -15,6 +22,26 @@ main {
     margin: 40px 0 20px 0;
     position: relative;
 }
+.controls .btn {
+    width: 100%;
+    display: block;
+    transition: all 200ms;
+}
+.controls .btn-default {
+    color: #552100;
+    background-color: #FFF;
+    border-color: #D4936A;
+}
+.controls .btn-default:hover {
+    color: #552100;
+    background-color: #FFCBAA;
+    border-color: #D4936A;
+}
+.controls .btn-default:focus {
+    color: #552100;
+    background-color: #D4936A;
+    border-color: #AA6439;
+}
 
 .controls .turn-indicator {
     font-size: 22px;
@@ -23,25 +50,24 @@ main {
     transition: opacity 200ms;
 }
 .controls .turn-indicator.player-x {
-    position: absolute;
-    left: 0;
-    top: 0;
+    float: left;
 }
 .controls .turn-indicator.player-o {
-    position: absolute;
-    right: 0;
-    top: 0;
+    float: right;
 }
+
 .controls .turn-indicator.visible {
     opacity: 1;
 }
+
 .controls .turn-indicator.player-x .glyphicon {
     transform: rotate(45deg);
     top: 5px;
     font-size: 26px;
+    color: #803E15;
 }
 .controls .turn-indicator.player-o .circle {
-    border: 5px solid #333;
+    border: 5px solid #803E15;
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -55,6 +81,7 @@ main {
 }
 
 .grid {
+    position: absolute;
     height: 100%;
     width: 100%;
     opacity: 1;
@@ -68,7 +95,7 @@ main {
 .grid .grid-row {
     clear: both;
     height: 33.33%;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #553800;
 }
 .grid .grid-row:last-child {
     border: none;
@@ -79,7 +106,7 @@ main {
     width: 33.33%;
     height: 100%;
     padding: 5px;
-    border-right: 2px solid black;
+    border-right: 2px solid #553800;
 }
 .grid .grid-cell:last-child {
     border-right: none;
@@ -91,7 +118,8 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 5px;
-        
+    position: relative;
+    
     /* Glyphicons */
     font-family: 'Glyphicons Halflings';
     font-style: normal;
@@ -105,25 +133,32 @@ main {
     transition: background 200ms;
 }
 .game-playing .grid .cell.cell-empty:hover {
-    background: #C7FFFF;
+    background: #D4B06A;
 }
 .game-playing .grid .cell.cell-empty:active{
-    background: #C7F2FF;
+    background: #AA8339;
+}
+
+.grid .cell::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .grid .cell.cell-x::before {
     content: "\2b";
-    transform: rotate(45deg);
-    display: inline-block;
     line-height: 1;
-    padding-left: 8px;
-    padding-bottom: 8px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: center;
+    color: #803E15;
 }
 
 .grid .cell.cell-o::before {
     content: "";
-    border: 22px solid #333;
-    display: inline-block;
+    border: 13px solid #803E15;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .animate-show {
@@ -139,7 +174,7 @@ main {
 }
 
 .stripes .stripe {
-    background: #444;
+    background: #553800;
     border-radius: 7px;
     position: absolute;
     z-index: 5;
@@ -186,39 +221,84 @@ main {
     transform-origin: bottom;
 }
 
-@media (min-width: 700px) {
-    .app {
-        width: 600px;
-    }
+/* Default sizes (for small screens)*/
+.app {
+    width: 95%;
+}
 
-    .board {
-        width: 600px;
-        height: 600px;
-    }
-    
-    .grid .cell {
-        font-size: 120px;
-        line-height: 187px;
+.board {
+    /* force to a square */
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+
+.grid .cell.cell-x::before {
+    height: 60px;
+    font-size: 60px;
+    margin: 0 0 4px 4px;
+}
+
+.grid .cell.cell-o::before {
+    border-width: 13px;
+    width: 60px;
+    height: 60px;
+}
+
+.stripes .rows .stripe {
+    height: 14px;
+    margin-top: -7px;
+}
+
+.stripes .columns .stripe,
+.stripes .diagonals .stripe {
+    width: 14px;
+    margin-left: -7px;
+}
+
+@media (min-width: 600px) {
+    .app {
+        width: 540px;
     }
     
     .grid .cell.cell-o::before {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        border-width: 22px;
+    }
+    .grid .cell.cell-x::before {
+        font-size: 110px;
+        height:110px;
+        margin: 0 0 8px 8px;
     }
     
     .stripes .rows .stripe {
-        height: 22px;
-        margin-top: -11px;
+        height: 20px;
+        margin-top: -10px;
     }
     
-    .stripes .columns .stripe {
-        width: 22px;
-        margin-left: -11px;
+    .stripes .columns .stripe,
+    .stripes .diagonals .stripe    {
+        width: 20px;
+        margin-left: -10px;
     }
     
-    .stripes .diagonals .stripe {
-        width: 22px;
-        margin-left: -11px;
+    .controls .btn {
+        display: inline-block;
+        width: auto;
+    }
+    .controls .turn-indicator {
+        float: none;
+    }
+    
+    .controls .turn-indicator.player-x {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .controls .turn-indicator.player-o {
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }

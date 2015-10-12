@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Angular Tic-Tac-Toe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -13,9 +14,10 @@
 <div class="app">
     <header>
         <h1>Angular Tic-Tac-Toe</h1>
+        <p>A simple Tic-Tac-Toe game to practice with Angular.</p>
     </header>
     <main ng-app="ticTacToe" ng-controller="gameController">
-        <div class="controls">
+        <div class="controls clearfix">
             <button class='btn btn-default btn-lg'
                     ng-click="newGame()">New Game</button>
             <div class="turn-indicator player-x" ng-class="currentPlayer===0 ? 'visible' : ''">
@@ -56,7 +58,7 @@
         </div>
     </main>
     <footer>
-    A simple Tic-Tac-Toe game that I created to play with Angular.
+    By Michael Brooks
     </footer>
 </div>
 </body>
